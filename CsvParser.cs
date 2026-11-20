@@ -40,9 +40,10 @@ current.Append(c);
 fields.Add(current.ToString());
 return fields;
 }
-public static string ToCsvLine(IEnumerable fields)
+
+public static string ToCsvLine(IEnumerable<string> fields)
 {
 return string.Join(",", fields.Select(f =>
-f.Contains(',') || f.Contains('"') ? $""{f.Replace(""", """")}"" : f));
+f.Contains(',') || f.Contains('"') ? $"\"{f.Replace("\"", "\"\"")}\"" : f));
 }
 }
